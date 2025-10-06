@@ -7,6 +7,9 @@ function leer(String $path): array {
     }
     $contenido = file_get_contents($archivo);
     $lineas = explode("\n", $contenido);
+    foreach ($lineas as $key => $linea) {
+        $lineas[$key] = trim(strtoupper($linea));
+    }
     return $lineas;
 }
 

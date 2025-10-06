@@ -26,7 +26,7 @@ if (isset($_POST['letra'])) {
 }
 
 $mostrar = "";
-foreach (str_split(trim($_SESSION['palabra'])) as $letra) {
+foreach (str_split(($_SESSION['palabra'])) as $letra) {
     $mostrar .= in_array($letra, $_SESSION['letras_usadas']) ? $letra : "_";
 }
 
@@ -38,66 +38,9 @@ if ($_SESSION['intentos'] <= 0) {
     $mensaje = "Lo siento ¡Perdiste! La palabra era: " . $_SESSION['palabra'];
 }
 
-function dibujoAhorcado($intentos) {
-    $estados = [
-        6 => " 
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-========= ",
-        5 => " 
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-========= ",
-        4 => " 
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-========= ",
-        3 => " 
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-========= ",
-        2 => " 
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-========= ",
-        1 => " 
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-========= ",
-        0 => " 
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-========= "
-    ];
-    return "<pre>" . $estados[$intentos] . "</pre>";
+require 'dibujar.php';
+function dibujo($intentos) {
+    return dibujoAhorcado($intentos);
 }
 ?>
 <!DOCTYPE html>
@@ -110,7 +53,7 @@ function dibujoAhorcado($intentos) {
 <h1>Juego del Ahorcado Normal</h1>
 
 
-<?php echo dibujoAhorcado($_SESSION['intentos']); ?>
+<?php echo dibujo($_SESSION['intentos']); ?>
 
 <p>Palabra: <?php echo implode(" ", str_split($mostrar)); ?></p>
 <p>Intentos restantes: <?php echo $_SESSION['intentos']; ?></p>

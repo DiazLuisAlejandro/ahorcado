@@ -1,8 +1,8 @@
 caida
 choza
 fuego
-categoria
-locura
-pantalla
-escalera
-ventana
+carro
+locos
+plano
+hielo
+mando

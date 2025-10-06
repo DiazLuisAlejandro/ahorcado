@@ -1,7 +1,13 @@
 <?php
 session_start();
 
-$palabras = ["PROGRAMACION", "PHP", "AHORCADO", "JUEGO", "WEB"];
+require 'leer.php';
+
+function obtenerPalabrasDificiles() {
+    return leer('facil');
+}
+
+$palabras = obtenerPalabrasDificiles();
 
 if (!isset($_SESSION['palabra'])) {
     $_SESSION['palabra'] = $palabras[array_rand($palabras)];
@@ -101,7 +107,8 @@ function dibujoAhorcado($intentos) {
     <title>Ahorcado en PHP</title>
 </head>
 <body>
-<h1>Juego del Ahorcado</h1>
+<h1>Juego del Ahorcado Fácil </h1>
+
 
 <?php echo dibujoAhorcado($_SESSION['intentos']); ?>
 

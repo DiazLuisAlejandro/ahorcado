@@ -1,8 +1,8 @@
-palabra
+puro
 sol
-curso
+malo
 luna
-perla
+zeta
 agua
 casa
-circulo
+gato
